@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Shop Type</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  
+  
+</head>
+<body>
+
+<div class="container">
+  <h2>Shop Type View</h2>
+
+		<table id="viewshop" class="table  table-bordered">
+
+			<thead>
+				<tr>
+					<th>Sl no.</th>
+					<th>Shop Type Name</th>
+					<th>Description</th>
+					<th>Status</th>
+					<th>Action</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="shopType,iter : ${Shop}">
+					<td th:text="${iter.index + 1}"></td>
+					<td th:text="${shopType.shopTypeName}"></td>
+					<td th:text="${shopType.shopTypeDescription}"></td>
+					<td th:text="${shopType.status == true ? 'Active' : 'Inactive'}"></td>
+					<td>
+					<button class="btn btn-success">Edit</button>
+					<form th:action="@{'deleteShoptype/' + ${shopType.shopTypeId}}" method="post">
+					<button class="btn btn-danger" type="submit" >
+					  Delete 
+					</form>
+					</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<span th:text="${Message}" style="font-size:18px;color:green;"></span>
+  <a href="shopType" class="btn btn-primary">Go To Add Shop Page</a>
+	</div>
+
+</body>
+</html>

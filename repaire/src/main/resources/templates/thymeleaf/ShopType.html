@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Shop Type</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  
+  <script>
+  // this function will validate all the field details
+  function validate()
+  {
+	  
+	  var name = document.getElementById("name").value;
+	  if(name == undefined || name == null || name.trim() == '' || name.trim().length == 0)
+		  {
+		  alert('Please provide the valid shop type name.');
+		  document.getElementById("name").focus();
+		  return false;
+		  }
+	  
+	  var description = document.getElementById("description").value;
+	  if(description == undefined || description == null || description.trim() == '' || description.trim().length == 0)
+		  {
+		  document.getElementById("description").focus();
+		  alert('Please provide the valid shop description.');
+		  return false;
+		  }
+	  
+	  
+	  return true;
+  }
+  
+  
+  </script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Shop Type</h2>
+  <form action="saveShopTypeDetails" method="POST" onsubmit="return validate();">
+    <div class="form-group">
+      <label for="email">Shop Type Name:</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter Shop Type Name" name="shopTypeName">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Desciption:</label>
+      <textarea class="form-control" name="shopTypeDescription" id="description" rows="2" cols="20"></textarea>
+    </div>
+    <div class="checkbox">
+      <label><input type="radio" name="status" value="true" checked="checked"> Active</label>&nbsp;
+      <label><input type="radio" name="status" value="false"> In-Active</label>
+    </div>
+    <button type="submit" class="btn btn-success" >Submit</button>
+    <button type="reset" class="btn btn-danger">Reset</button>
+  </form>
+  
+  <span style="color:green;font-size: 18px;" th:text="${Message}"></span>
+  <br>
+  <a href="viewShopType" class="btn btn-primary">Go To View Page</a>
+</div>
+
+</body>
+</html>
